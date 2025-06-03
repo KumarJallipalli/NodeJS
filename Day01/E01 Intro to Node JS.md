@@ -1,4 +1,4 @@
-# E01: Intro to Node JS [ 03/02/2025 ]
+# E01: Intro to Node JS
 
 ---
 

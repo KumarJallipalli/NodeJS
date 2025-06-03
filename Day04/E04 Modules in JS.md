@@ -1,4 +1,4 @@
-# E04: Modules in JS [ 03/02/2025 ]
+# E04: Modules in JS
 
 ---
 

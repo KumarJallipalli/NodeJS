@@ -1,4 +1,4 @@
-# E05: BTS of require() [ 04/02/2025 ]
+# E05: BTS of require()
 
 ---
 

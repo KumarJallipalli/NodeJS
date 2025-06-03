@@ -1,4 +1,4 @@
-# E03: Global Object [ 03/02/2025 ]
+# E03: Global Object
 
 ---
 

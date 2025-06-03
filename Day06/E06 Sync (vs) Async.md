@@ -1,4 +1,4 @@
-# E06: Sync (vs) Async [ 04/02/2025 ]
+# E06: Sync (vs) Async
 
 ---
 

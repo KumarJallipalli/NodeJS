@@ -1,4 +1,4 @@
-# E02: JS on Server [ 03/02/2025 ]
+# E02: JS on Server
 
 ---
 
