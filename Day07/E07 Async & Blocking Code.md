@@ -1,4 +1,4 @@
-# E07: Async & Blocking Code [ 04/02/2025 ]
+# E07: Async & Blocking Code
 
 ---
 

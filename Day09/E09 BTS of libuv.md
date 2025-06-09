@@ -1,4 +1,4 @@
-# E09: BTS of libuv [ 05/02/2025 ]
+# E09: BTS of libuv
 
 ---
 

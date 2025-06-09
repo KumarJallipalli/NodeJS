@@ -1,4 +1,4 @@
-# E08: BTS of V8 Engine [ 05/02/2025 ]
+# E08: BTS of V8 Engine
 
 ---
 
