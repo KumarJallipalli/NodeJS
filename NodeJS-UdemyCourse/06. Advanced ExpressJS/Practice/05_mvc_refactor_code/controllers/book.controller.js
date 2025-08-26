@@ -1,34 +1,10 @@
-const express = require('express');
-const fs = require('node:fs');
+const { BOOKS } = require('../models/books');
 
-const app = express();
-const PORT = 8000;
-
-const books = [
-        { id: 1, title: 'Book One', author: 'Author One' },
-        { id: 2, title: 'Book Two', author: 'Author Two' },
-];
-
-function loggerMiddleware (req, res, next) {
-    const logMessage = `[${Date.now()}]: ${req.method} ${req.path} \n`
-    fs.appendFileSync('logs.txt', logMessage, 'utf-8');
-    next()
+exports.getAllBooks = (req, res) => {
+    res.json(BOOKS);
 }
 
-// To Parse & Store the req data 
-app.use(express.json());
-
-// Middleware fn to log every request
-app.use(loggerMiddleware);
-
-
-// Route to GET all Books
-app.get('/books', (req, res) => {
-    res.json(books);
-})
-
-// Route to fetch a Book by ID
-app.get('/books/:id', (req, res) => {
+exports.getBookByID = (req, res) => {
     const id = parseInt(req.params.id);
     
     // send response if ID is NAN
@@ -37,7 +13,7 @@ app.get('/books/:id', (req, res) => {
     }
 
     // Find the book
-    const book = books.find((i) => {return i.id === id});
+    const book = BOOKS.find((i) => {return i.id === id});
 
     // if book not found
     if (!book) {
@@ -46,10 +22,9 @@ app.get('/books/:id', (req, res) => {
 
     // Send response
     return res.json(book);
-})
+}
 
-// Route to POST a New Book
-app.post('/books', (req, res) => {
+exports.postNewBook = (req, res) => {
     const {title, author} = req.body;
 
     // Condition where title or author is missing in Req
@@ -60,15 +35,14 @@ app.post('/books', (req, res) => {
         return res.status(400).json({error: "author of the book is Missing"});
     }
     
-    const id = books.length + 1;
+    const id = BOOKS.length + 1;
     const book = {id, title, author};
-    books.push(book);
+    BOOKS.push(book);
 
     return res.status(201).json({Message: `Book with id:${id} is Inserted`});
-})
+}
 
-// Route to DELETE a Book by ID
-app.delete('/books/:id', (req, res) => {
+exports.deleteBookByID = (req, res) => {
     const id = parseInt(req.params.id);
     
     // send response if ID is NAN
@@ -77,15 +51,13 @@ app.delete('/books/:id', (req, res) => {
     }
 
     // Find the book
-    const indexToDelete = books.findIndex((i) => {return i.id === id});
+    const indexToDelete = BOOKS.findIndex((i) => {return i.id === id});
 
     // if book not found
     if (indexToDelete < 0) {
         return res.status(404).json({error: `Book with id:${id} is NOT found`});
     }
 
-    books.splice(indexToDelete, 1);
+    BOOKS.splice(indexToDelete, 1);
     return res.json({Message: `Book with id:${id} is Deleted Successfully`});
-})
-
-app.listen(PORT, () => console.log(`Server is Running on PORT: ${PORT}`));
+}
